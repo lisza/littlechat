@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
 class NewMessage extends Component {
-  
   resizeForm = (event) => {
     const form = event.currentTarget;
     form.style.height = "40px";
@@ -12,7 +11,7 @@ class NewMessage extends Component {
     event.stopPropagation();
     if(event.keyCode === 13 && event.shiftKey === false) {
       // event.preventDefault();
-      console.log('TEST');
+      this.props.submit();
      }
   }
     
@@ -35,9 +34,10 @@ class NewMessage extends Component {
               style={style}
               type="text"
               placeholder="New Message..."
-              
+              value={this.props.value}
               onKeyUp={this.resizeForm}
-              onKeyDown={this.enterPress} />
+              onKeyDown={this.enterPress}
+              onChange={this.props.change} />
           </form>
         </div>
       );  

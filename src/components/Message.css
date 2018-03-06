@@ -1,11 +1,18 @@
 .Message {
   /* border: '1px solid skyblue', */
+  border-radius: 5px;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
   margin: 10px 0;
   max-width: 450px;
   padding: 10px;
+}
+
+.Message:hover {
+  background: beige;
+  /* background: khaki; */
+  /* background: linen; */
 }
 
 .Message-author {

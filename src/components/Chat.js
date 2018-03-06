@@ -12,6 +12,26 @@ class Chat extends Component {
     newMessage: {}
   }
   
+  handleSubmit = () => {
+    const author = this.props.user;
+    const date = new Date().toString();
+    const newMessage = Object.assign({}, this.state.newMessage, {author: author, date: date});
+    
+    const newMessageList = [...this.state.messageList];
+    newMessageList.push(newMessage);
+    this.setState({
+      messageList: newMessageList,
+      newMessage: { text: "" },
+    });  
+  }
+  
+  handleChange = (event) => {
+    const message = { text: event.target.value };
+    this.setState({
+      newMessage: message
+    });
+  }
+  
   render() {  
     return(
       <div className="Chat">
@@ -19,7 +39,10 @@ class Chat extends Component {
         
         <MessageList messages={this.state.messageList} />
           
-        <NewMessage />
+        <NewMessage
+          value={this.state.newMessage.text}
+          change={this.handleChange}
+          submit={this.handleSubmit} />
       </div>
     );
   }
