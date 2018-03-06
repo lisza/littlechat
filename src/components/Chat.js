@@ -4,6 +4,7 @@ import Connection from '../backend/backend.js';
 import Moment from 'moment';
 import MessageList from './MessageList';
 import NewMessage from './NewMessage';
+import Typing from './Typing';
 
 class Chat extends Component {
   constructor(props) {
@@ -89,25 +90,16 @@ class Chat extends Component {
   }
   
   render() {
-    const style = {
-      typing: {
-        fontSize: 'small',
-        color: 'grey',
-        height: '25px'
-      }
-    };
-    
     return(
       <div className="Chat">
         <h2>Chat with {this.props.partner}</h2>
         
-        <MessageList messages={this.state.messageList} />
+        <MessageList
+          messages={this.state.messageList} />
         
-        <div style={style.typing}>
-          { this.state.whosTyping && this.state.whosTyping[this.props.partner] ?
-              `${this.props.partner} is typing... `
-             : null }
-        </div>
+        <Typing
+          whosTyping={this.state.whosTyping}
+          partner={this.props.partner} />
           
         <NewMessage
           value={this.state.newMessage.text}
