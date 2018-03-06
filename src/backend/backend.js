@@ -4,10 +4,11 @@
 const allConnections = [];
 
 class Connection {
-  constructor(user, onMessage, onTyping) {
+  constructor(user, onMessage, onTyping, resetTypingTimeout) {
     this.user = user;
     this.onMessage = onMessage;
     this.onTyping = onTyping;
+    this.resetTypingTimeout = resetTypingTimeout;
     allConnections.push(this);
   }
   
@@ -23,6 +24,7 @@ class Connection {
     typingUpdate[user] = true;
     allConnections.forEach((connection) => {
       connection.onTyping(typingUpdate);
+      connection.resetTypingTimeout(user);
     });   
   }
   

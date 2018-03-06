@@ -9,11 +9,12 @@ class Chat extends Component {
   constructor(props) {
     super(props);
     this.connection = undefined;
-    
+    this.typingTimeout = undefined;    
     this.state = {
       messageList: [
-        { author: "Josh", date: "Mon Mar 05 2018 08:10:57 GMT-0800 (PST)", text: "Hey how's it going?" },
-        { author: "Lisza", date: "Mon Mar 05 2018 08:18:57 GMT-0800 (PST)", text: "Hi not too bad. What are you up to?" },
+        // A couple messages to get started, feel free to delete
+        { author: "Josh", date: "Mon Mar 05 2018 08:10:57 GMT-0800 (PST)", text: "A chat is a chat is a chat" },
+        { author: "Lisza", date: "Mon Mar 05 2018 08:18:57 GMT-0800 (PST)", text: "lol you're such a philosopher :)" },
       ],
       newMessage: {},
       whosTyping: undefined
@@ -25,7 +26,8 @@ class Chat extends Component {
     this.connection = new Connection(
       this.props.user,
       this.onMessage,
-      this.onTyping
+      this.onTyping,
+      this.resetTypingTimeout
     );
   }
   
@@ -33,13 +35,6 @@ class Chat extends Component {
   // Not strictly necessary in our mock chat scenario
   componentWillUnmount() {
     this.connection.disconnect();
-  }
-  
-  // Callback registered with backend, update local state with incoming message
-  onMessage = (message) => {
-    const newMessageList = [...this.state.messageList];
-    newMessageList.push(message);
-    this.setState({ messageList: newMessageList });
   }
   
   // Construct new message and send to backend
@@ -53,17 +48,40 @@ class Chat extends Component {
     });  
   }
   
+  // Callback registered with backend, updates local state with incoming message
+  onMessage = (message) => {
+    const newMessageList = [...this.state.messageList];
+    newMessageList.push(message);
+    this.setState({ messageList: newMessageList });
+  }
+  
+  handleChange = (event) => {
+    // Detect message input and save to local state before submission
+    const message = { text: event.target.value };
+    this.setState({
+      newMessage: message
+    });
+    // Send info to backend that user is typing
+    this.connection.broadcastTyping();
+  }
+  
+  // Callback registered with backend, updates local typing state
   onTyping = (typingUpdate) => {
     const newTypingUpdate = Object.assign({}, this.state.whosTyping, typingUpdate);
     this.setState({ whosTyping: newTypingUpdate });
   }
   
-  handleChange = (event) => {
-    const message = { text: event.target.value };
-    this.setState({
-      newMessage: message
-    });
-    this.connection.broadcastTyping();
+  // Set timeout to broadcast user stopped typing after 2 seconds of inactivity 
+  resetTypingTimeout = (user) => {
+    if (this.typingTimeout) {
+      clearTimeout(this.typingTimeout);
+    }
+    this.typingTimeout = setTimeout(() => {
+      const update = Object.assign({}, this.state.whosTyping);
+      update[user] = false;
+      this.setState({ whosTyping: update });
+      this.typingTimeout = undefined;
+    }, 2000);
   }
   
   render() {
