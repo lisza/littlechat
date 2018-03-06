@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Chat.css';
 import MessageList from './MessageList';
+import NewMessage from './NewMessage';
 
 class Chat extends Component {
   state = {
@@ -11,28 +12,14 @@ class Chat extends Component {
     newMessage: {}
   }
   
-  render() {
-    const style = {
-      form: {
-        fontSize: '16px',
-        minHeight: '40px',
-        resize: 'none',
-        width: '250px'
-      }
-    };
-    
+  render() {  
     return(
       <div className="Chat">
         <h2>Chat with {this.props.partner}</h2>
         
-        <MessageList
-          messages={this.state.messageList} />
-        
-        <form>
-          <textarea
-            style={style.form}
-            placeholder="New message..." />
-        </form>
+        <MessageList messages={this.state.messageList} />
+          
+        <NewMessage />
       </div>
     );
   }
