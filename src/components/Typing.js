@@ -1,12 +1,6 @@
 import React from 'react';
 import './Typing.css';
 
-const style = {
-  fontSize: 'small',
-  color: 'grey',
-  height: '25px'
-};
-
 const typing = (props) => {
   return (
     <div className="Typing">
