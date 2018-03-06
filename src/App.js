@@ -3,6 +3,9 @@ import './App.css';
 import Chat from './components/Chat';
 
 class App extends Component {
+  // In order to mock two users, pass hardcoded users
+  // as props to Chat component
+  
   render() {
     return (
       <div className="App">
