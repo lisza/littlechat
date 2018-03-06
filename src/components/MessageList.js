@@ -1,18 +1,13 @@
 import React from 'react';
+import Message from './Message';
 
 const messageList = (props) => {
-  const style = {
-      border: '1px solid lightgrey',
-      marginBottom: '10px',
-      padding: '5px',
-  };
-  
-  return props.messages.map((message) => {
-    return <div
-      style={style}>
-      {message.author} {message.date}
-      <p>{message.text}</p>
-    </div>
+  return props.messages.map((message, index) => {
+    return <Message 
+      text={message.text}
+      author={message.author}
+      date={message.date}
+      key={`message-${index}`} />    
   });
 }
 
