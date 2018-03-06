@@ -39,13 +39,17 @@ class Chat extends Component {
   
   // Construct new message and send to backend
   handleSubmit = () => {
-    const author = this.props.user;
-    const date = Moment();
-    const newMessage = Object.assign({}, this.state.newMessage, {author: author, date: date});  
-    this.connection.postMessage(newMessage);
-    this.setState({
-      newMessage: { text: "" },
-    });  
+    let text = this.state.newMessage.text;
+    // A bit of a hack to prevent empty messages. Not perfect.
+    if (text && text.replace(/^\s+|\s+$/g,'')) {
+      const author = this.props.user;
+      const date = Moment();
+      const newMessage = Object.assign({}, this.state.newMessage, {author: author, date: date});  
+      this.connection.postMessage(newMessage);
+      this.setState({
+        newMessage: { text: "" },
+      });  
+    }  
   }
   
   // Callback registered with backend, updates local state with incoming message
