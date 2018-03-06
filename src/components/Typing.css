@@ -1,7 +1,8 @@
-.Typing {
-  font-size: small;
+.Typing {  
   color: grey;
-  height: 25px;
+  font-size: small;
+  height: 28px;
+  /* margin-left: 50px; */
 }
 
 .Typing-dots > div {
@@ -9,7 +10,7 @@
   height: 4px;
   margin-bottom: -1.5px;
   margin-left: 2px;
-  background-color: #aaa;
+  background-color: grey;
 
   border-radius: 100%;
   display: inline-block;
