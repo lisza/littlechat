@@ -1,0 +1,33 @@
+.Message {
+  /* border: '1px solid skyblue', */
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  margin: 10px 0;
+  max-width: 450px;
+  padding: 10px;
+}
+
+.Message-author {
+  background: skyblue;
+  border-radius: 50px;
+  /* color: white; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  padding: 5px;
+  grid-row: 1 / -1;
+} 
+
+.Message-date {
+  font-size: small;
+}
+
+.Message-text {
+  margin: 0;
+  word-break: break-word;
+  width: 100%;
+}

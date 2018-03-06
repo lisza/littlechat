@@ -1,19 +1,14 @@
 import React from 'react';
+import './Message.css';
 
 const message = (props) => {
-  const style = {
-    message: {
-      border: '1px solid lightgrey',
-      marginBottom: '10px',
-      padding: '5px',
-    }    
-  };
+  // Styles live in Message.css
   
   return (
-    <div style={style.message}>
-      <div style={style.author}>{props.author}</div>
-      <div style={style.date}>{props.date}</div>
-      <p style={style.text}>{props.text}</p>
+    <div className="Message">
+      <div className="Message-author">{props.author[0]}</div>
+      <div className="Message-date">{props.date}</div>
+      <p className="Message-text">{props.text}</p>
     </div>
   );
 };
