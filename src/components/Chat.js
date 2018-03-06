@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import './Chat.css';
 import MessageList from './MessageList';
 import NewMessage from './NewMessage';
+import Moment from 'moment';
 
 class Chat extends Component {
   state = {
     messageList: [
-      { author: "Josh", date: "Today, 10:00am", text: "Hey how's it going?" },
-      { author: "Lisza", date: "Today, 10:07am", text: "Hi not too bad. What are you up to?" },
+      { author: "Josh", date: "Mon Mar 05 2018 08:10:57 GMT-0800 (PST)", text: "Hey how's it going?" },
+      { author: "Lisza", date: "Mon Mar 05 2018 08:18:57 GMT-0800 (PST)", text: "Hi not too bad. What are you up to?" },
     ],
     newMessage: {}
   }
   
   handleSubmit = () => {
     const author = this.props.user;
-    const date = new Date().toString();
+    const date = Moment();
     const newMessage = Object.assign({}, this.state.newMessage, {author: author, date: date});
     
     const newMessageList = [...this.state.messageList];
