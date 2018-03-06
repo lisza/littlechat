@@ -15,7 +15,8 @@ class Chat extends Component {
         { author: "Josh", date: "Mon Mar 05 2018 08:10:57 GMT-0800 (PST)", text: "Hey how's it going?" },
         { author: "Lisza", date: "Mon Mar 05 2018 08:18:57 GMT-0800 (PST)", text: "Hi not too bad. What are you up to?" },
       ],
-      newMessage: {}
+      newMessage: {},
+      whosTyping: undefined
     };
   }
   
@@ -24,6 +25,7 @@ class Chat extends Component {
     this.connection = new Connection(
       this.props.user,
       this.onMessage,
+      this.onTyping
     );
   }
   
@@ -51,19 +53,39 @@ class Chat extends Component {
     });  
   }
   
+  onTyping = (typingUpdate) => {
+    const newTypingUpdate = Object.assign({}, this.state.whosTyping, typingUpdate);
+    this.setState({ whosTyping: newTypingUpdate });
+  }
+  
   handleChange = (event) => {
     const message = { text: event.target.value };
     this.setState({
       newMessage: message
     });
+    this.connection.broadcastTyping();
   }
   
-  render() {  
+  render() {
+    const style = {
+      typing: {
+        fontSize: 'small',
+        color: 'grey',
+        height: '25px'
+      }
+    };
+    
     return(
       <div className="Chat">
         <h2>Chat with {this.props.partner}</h2>
         
         <MessageList messages={this.state.messageList} />
+        
+        <div style={style.typing}>
+          { this.state.whosTyping && this.state.whosTyping[this.props.partner] ?
+              `${this.props.partner} is typing... `
+             : null }
+        </div>
           
         <NewMessage
           value={this.state.newMessage.text}
