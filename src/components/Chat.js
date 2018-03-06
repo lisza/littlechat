@@ -27,6 +27,12 @@ class Chat extends Component {
     );
   }
   
+  // Remove user from being broadcast to when Chat unmounts
+  // Not strictly necessary in our mock chat scenario
+  componentWillUnmount() {
+    this.connection.disconnect();
+  }
+  
   // Callback registered with backend, update local state with incoming message
   onMessage = (message) => {
     const newMessageList = [...this.state.messageList];

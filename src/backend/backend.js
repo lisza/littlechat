@@ -14,7 +14,14 @@ class Connection {
     allConnections.forEach((connection) => {
       connection.onMessage(message);
     });
-  }
+  };
+  
+  disconnect = () => {
+    const index = allConnections.indexOf(this);
+    if (index !== -1) {
+      allConnections.splice(index, 1);
+    }
+  };
 }
 
 export default Connection;
