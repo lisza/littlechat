@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Chat.css';
+import MessageList from './MessageList';
 
 class Chat extends Component {
   state = {
@@ -12,11 +13,6 @@ class Chat extends Component {
   
   render() {
     const style = {
-      message: {
-        border: '1px solid lightgrey',
-        marginBottom: '10px',
-        padding: '5px',
-      },
       form: {
         fontSize: '16px',
         minHeight: '40px',
@@ -29,13 +25,8 @@ class Chat extends Component {
       <div className="Chat">
         <h2>Chat with {this.props.partner}</h2>
         
-        { this.state.messageList.map((message) => {
-          return <div style={style.message}>
-            {message.author} {message.date}
-            <p>{message.text}</p>
-          </div>
-          })
-        }
+        <MessageList
+          messages={this.state.messageList} />
         
         <form>
           <textarea
