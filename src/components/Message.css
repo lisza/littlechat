@@ -1,11 +1,11 @@
 .Message {
   border-radius: 5px;
-  box-shadow: 0 0 0.5px #aaa;
+  box-shadow: 0 0 0.5px #eee;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
-  padding: 10px;
-  margin-bottom:5px;
+  padding: 8px;
+  margin-bottom: 8px;
   grid-column: 1 / 4;
   }
 
@@ -13,7 +13,6 @@
   grid-template-columns: 1fr auto;
   grid-template-rows: auto auto;
   grid-column: 2 / -1;
-  
 }
 
 .Message:hover {
