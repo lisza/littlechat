@@ -1,4 +1,4 @@
-live demo: http:liszalisza.com/littlechat
+Demo: http://liszalisza.com/littlechat
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
