@@ -25,6 +25,13 @@
   grid-row: 1 / -1;
 } 
 
+@media screen and (min-width: 550px) {
+  .Message-author {
+    height: 30px;
+    width: 30px;
+  }
+}
+
 .Message-date {
   font-size: small;
 }

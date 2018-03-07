@@ -1,5 +1,5 @@
 .App {  
-  margin: 20px;
+  margin: 10px;
 }
 
 @media screen and (min-width: 550px) {
@@ -8,5 +8,8 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
     justify-items: center;
+    font-size: 18px;
+    margin: 20px auto;
+    max-width: 860px;  
   }
 }

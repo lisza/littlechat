@@ -18,7 +18,7 @@ class NewMessage extends Component {
     render() {
       const style = {
         height: 'auto',
-        width: '300px',
+        width: '90%',
         minHeight: '40px',
         fontSize: '16px',
         resize: 'none',
