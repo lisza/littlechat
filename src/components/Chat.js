@@ -14,7 +14,7 @@ class Chat extends Component {
     this.state = {
       messageList: [
         // A couple messages to get started, feel free to delete
-        { author: "Josh", date: "Mon Mar 05 2018 08:10:57 GMT-0800 (PST)", text: "A chat is a chat is a chat" },
+        { author: "Joshua", date: "Mon Mar 05 2018 08:10:57 GMT-0800 (PST)", text: "A chat is a chat is a chat" },
         { author: "Lisza", date: "Mon Mar 05 2018 08:18:57 GMT-0800 (PST)", text: "lol you're such a philosopher :)" },
       ],
       newMessage: {},
@@ -95,16 +95,17 @@ class Chat extends Component {
         <h2>Chat with {this.props.partner}</h2>
         
         <MessageList
-          messages={this.state.messageList} />
+          messages={this.state.messageList}
+          user={this.props.user} />
         
         <Typing
           whosTyping={this.state.whosTyping}
-          partner={this.props.partner} />
+          partner={this.props.partner}/>
           
         <NewMessage
           value={this.state.newMessage.text}
           change={this.handleChange}
-          submit={this.handleSubmit} />
+          submit={this.handleSubmit}/>
       </div>
     );
   }

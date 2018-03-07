@@ -1,11 +1,19 @@
 .Message {
-  /* border: 1px solid skyblue; */
   border-radius: 5px;
+  box-shadow: 0 0 0.5px #aaa;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
-  max-width: 450px;
   padding: 10px;
+  margin-bottom:5px;
+  grid-column: 1 / 4;
+  }
+
+.Message.right {
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  grid-column: 2 / -1;
+  
 }
 
 .Message:hover {
@@ -23,7 +31,14 @@
   margin-right: 10px;
   padding: 5px;
   grid-row: 1 / -1;
+  /* align-self: center; */
 } 
+
+.Message.right .Message-author {
+  grid-column: 2 / -1;
+  margin-left: 10px;
+  margin-right: 0;
+}
 
 @media screen and (min-width: 550px) {
   .Message-author {
@@ -40,4 +55,9 @@
   margin: 0;
   word-break: break-word;
   width: 100%;
+}
+
+.Message.right .Message-text,
+.Message.right .Message-date   {
+  text-align: right;
 }
