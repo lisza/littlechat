@@ -1,17 +1,24 @@
-.Typing {  
-  color: grey;
-  font-size: small;
-  height: 28px;
+.Typing {
+  /* color: #aaa; */
+  /* height: 28px; */
   grid-column: 1 / 4;
+  margin: 0 0 10px 58px;
+}
+
+.Typing-dots {
+  /* background: #bff0e1; */
+  background: ghostwhite;
+  border-radius: 15px;
+  padding: 7px 12px;
+  width: fit-content;
 }
 
 .Typing-dots > div {
-  width: 4px;
-  height: 4px;
-  margin-bottom: -1.5px;
+  width: 6px;
+  height: 6px;
   margin-left: 2px;
+  margin-bottom: 1px;
   background-color: grey;
-
   border-radius: 100%;
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.2s infinite ease-in-out both;
@@ -19,13 +26,17 @@
 }
 
 .Typing-dot1 {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
+  /* -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s; */
+  -webkit-animation-delay: 0.32s;
+  animation-delay: 0.32s;
 }
 
 .Typing-dot2 {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
+  /* -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s; */
+  -webkit-animation-delay: 0.16s;
+  animation-delay: 0.16s;
 }
 
 @-webkit-keyframes sk-bouncedelay {
@@ -34,10 +45,10 @@
 }
 
 @keyframes sk-bouncedelay {
-  0%, 80%, 100% { 
+  0%, 80%, 100% {
     -webkit-transform: scale(0.8);
     transform: scale(0.8);
-  } 40% { 
+  } 40% {
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
   }

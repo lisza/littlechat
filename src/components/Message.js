@@ -7,8 +7,10 @@ const message = (props) => {
   let addClass;
   if (props.user === props.author) {
     addClass = "right";
+  } else {
+    addClass = "left"
   }
-  
+
   return (
     <div className={`Message ${addClass}`}>
       <div className="Message-author">{props.author[0]}</div>

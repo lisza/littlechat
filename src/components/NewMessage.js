@@ -6,14 +6,14 @@ class NewMessage extends Component {
     form.style.height = "40px";
     form.style.height = (form.scrollHeight - 4) + "px";
   }
-  
+
   enterPress = (event) => {
     event.stopPropagation();
     if(event.keyCode === 13 && event.shiftKey === false) {
       this.props.submit();
      }
   }
-    
+
     render() {
       const style = {
         form: {
@@ -28,11 +28,11 @@ class NewMessage extends Component {
           overflow: 'hidden',
           border: '1px solid skyblue',
           borderRadius: '5px'
-        }    
+        }
       };
-      
+
       return (
-          <form 
+          <form
             style={style.form}
             onSubmit={this.enterPress}>
             <textarea
@@ -44,7 +44,7 @@ class NewMessage extends Component {
               onKeyDown={this.enterPress}
               onChange={this.props.change} />
           </form>
-      );  
+      );
     }
 };
 
